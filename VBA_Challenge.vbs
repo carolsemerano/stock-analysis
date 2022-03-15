@@ -1,4 +1,6 @@
 Sub AllStocksAnalysisRefactored()
+    
+    'Variables to evaluate code performance
     Dim startTime As Single
     Dim endTime  As Single
 
@@ -47,12 +49,12 @@ Sub AllStocksAnalysisRefactored()
     Dim tickerStartingPrices(12) As Single
     Dim tickerEndingPrices(12) As Single
     
-    ''2a) Create a for loop to initialize the tickerVolumes to zero.
+    '2a) Create a for loop to initialize the tickerVolumes to zero.
    For tickerIndex = 0 To 11
     
         tickerVolumes(tickerIndex) = 0
         
-        ''2b) Loop over all the rows in the spreadsheet.
+        '2b) Loop over all the rows in the spreadsheet.
         For i = 2 To RowCount
     
             '3a) Increase volume for current ticker
@@ -80,11 +82,12 @@ Sub AllStocksAnalysisRefactored()
         Next i
   Next tickerIndex
     
-    '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
+    'Activate Results WorkSheet
+    Worksheets("All Stocks Analysis").Activate
+    
     For i = 0 To 11
-        
-        Worksheets("All Stocks Analysis").Activate
-        
+    '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
+    
         Cells(4 + i, 1).Value = tickers(i)
         Cells(4 + i, 2).Value = tickerVolumes(i)
         Cells(4 + i, 3).Value = (tickerEndingPrices(i) / tickerStartingPrices(i)) - 1
@@ -120,4 +123,3 @@ Sub AllStocksAnalysisRefactored()
     MsgBox "This code ran in " & (endTime - startTime) & " seconds for the year " & (yearValue)
 
 End Sub
-
