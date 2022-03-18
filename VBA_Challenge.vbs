@@ -85,8 +85,8 @@ Sub AllStocksAnalysisRefactored()
     'Activate Results WorkSheet
     Worksheets("All Stocks Analysis").Activate
     
-    For i = 0 To 11
     '4) Loop through your arrays to output the Ticker, Total Daily Volume, and Return.
+    For i = 0 To 11
     
         Cells(4 + i, 1).Value = tickers(i)
         Cells(4 + i, 2).Value = tickerVolumes(i)
